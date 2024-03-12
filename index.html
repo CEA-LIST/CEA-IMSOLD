@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>CEA-IMSOLD</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="https://jonbarron.info/zipnerf/img/nottingham.jpg"> -->
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1296">
+    <meta property="og:image:height" content="840">
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content="https://jonbarron.info/zipnerf/"/> -->
+    <meta property="og:title" content="CEA-IMSOLD: a Dataset for Multi-Scale Object Localization
+    in Industry" />
+    <meta property="og:description" content="We introduce the CEA Industrial Multi-Scale Ob-
+    ject Localization Dataset (CEA-IMSOLD), a new BOP format
+    dataset for 6-DoF object localization, crucial for robotics. This
+    dataset aims to evaluate the current localization methods with
+    respect to a new difficulty: large variations in observation dis-
+    tance and, consequently, large variations in image appearance.
+    Compared to the other publicly available datasets, our dataset
+    provides both images with objects small and completely visible
+    in the image, and images where objects are observed close
+    enough so they appear larger than the field of view of the cam-
+    era. We also propose to consider the observation distance in the
+    evaluation process and introduce new metrics to do so. Finally,
+    our dataset contains a large variety of industrial objects, from
+    small and simple objects such as bolts to sizable and complex
+    ones such as large car parts." />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CEA-IMSOLD: a Dataset for Multi-Scale Object Localization
+    in Industry" />
+    <meta name="twitter:description" content="We introduce the CEA Industrial Multi-Scale Ob-
+    ject Localization Dataset (CEA-IMSOLD), a new BOP format
+    dataset for 6-DoF object localization, crucial for robotics. This
+    dataset aims to evaluate the current localization methods with
+    respect to a new difficulty: large variations in observation dis-
+    tance and, consequently, large variations in image appearance.
+    Compared to the other publicly available datasets, our dataset
+    provides both images with objects small and completely visible
+    in the image, and images where objects are observed close
+    enough so they appear larger than the field of view of the cam-
+    era. We also propose to consider the observation distance in the
+    evaluation process and introduce new metrics to do so. Finally,
+    our dataset contains a large variety of industrial objects, from
+    small and simple objects such as bolts to sizable and complex
+    ones such as large car parts." />
+    <!-- <meta name="twitter:image" content="https://jonbarron.info/zipnerf/img/teaser.jpg" /> -->
+
+
+<!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"> -->
+
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+rel="stylesheet">
+
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<!--
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+-->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<!--link rel="stylesheet" href="./static/css/index.css"-->
+<link rel="icon" href="./img/favicon_sold.ico">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+<link rel="stylesheet" href="css/app.css">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+<script src="js/app.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    -->
+    <!-- script src="./static/js/index.js"></script-->
+
+    
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>CEA-IMSOLD</b>: a Dataset for Multi-Scale Object Localization in Industry</br> 
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://doriandpetit.com/">
+                          Boris Meden¹
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?hl=fr&user=Ym-suFYAAAAJ">
+                            Emanuel Pablo Vega¹
+                          </a>
+                    </li>
+                    <li>
+                        <a href="https://cedric.cnam.fr/lab/en/author/paveld/">
+                            Fabrice Mayran de Chamisso¹
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=kUVG8pIAAAAJ&hl=fr">
+                            Steve Bourgeois¹
+                        </a>
+                    </li>
+                    </br>¹Université Paris-Saclay, CEA List, F-91120, Palaiseau, France
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="https://arxiv.org/abs/2312.03357">
+                            <image src="img/paper_image.jpg" height="150px" width="116px">
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/CEA-LIST">
+                            <image src="img/data.png" height="150px" width="116px"  style="padding-bottom:15%;padding-top:9%;">
+                            <h4><strong>Data (To be released)</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    We introduce the CEA Industrial Multi-Scale Object Localization Dataset (CEA-IMSOLD), a new BOP format
+                    dataset for 6-DoF object localization, crucial for robotics. This
+                    dataset aims to evaluate the current localization methods with
+                    respect to a new difficulty: large variations in observation distance
+                     and, consequently, large variations in image appearance.
+                    Compared to the other publicly available datasets, our dataset
+                    provides both images with objects small and completely visible
+                    in the image, and images where objects are observed close
+                    enough so they appear larger than the field of view of the cam-
+                    era. We also propose to consider the observation distance in the
+                    evaluation process and introduce new metrics to do so. Finally,
+                    our dataset contains a large variety of industrial objects, from
+                    small and simple objects such as bolts to sizable and complex
+                    ones such as large car parts.                 </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Dataset overview
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:42%;">
+                        <img src="img/img/portiere.png" style="position:absolute;top:0;left:0;width:100%">
+                    </div>
+                    <br>
+                    <p class="text-justify">
+                        Our dataset covers the following aspectcs, until now unconsidered: 
+                        <ol>
+                            <li style="text-align: left">Camera to object distance variation: as illustrated above, 
+                                our dataset includes large observation distance
+                                variations while this variation is
+                                limited in BOP challenge datasets. This makes this suitable for use cases 
+                                such as: inspection, augmented reality, mobile robotics, etc.</li>
+                            
+                            <li style="text-align: left">Depth sensor quality variety: our dataset includes
+                                depth images provided by both high-end and
+                                low-cost sensors, and covers both industrial and consumer applications.</li>
+                            
+                            <li style="text-align: left">Object complexity variation: our dataset includes
+                                both simple (e.g. bottle cap), and complex objects (e.g.
+                                car engine), covering use cases such as pick-and-place
+                                and quality inspection.</li>
+                            
+                            <li style="text-align: left">High accuracy ground-truth: the annotation process
+                                based on robotic arm and high-end depth sensors
+                                allows to reach high accuracy ground-truth.</li>
+                            
+                            <li style="text-align: left">A new metric taking into account distance to objects
+                                in performance evaluation.</li>
+                            
+                        </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Objects and 3D models
+                </h3>
+                <p class="text-justify">
+                    The dataset is composed of 25 objects with
+                    different characteristics in terms of surface (reflecting vs.
+                    lambertian), symmetries (with vs. without full rotational
+                    symmetry), complexity (primitive shapes vs. complex objects), 
+                    flatness (flat vs. voluminous), details (with vs. without
+                    very fine details on their surface), compactness (long vs.
+                    compact), and size (diameters from 23 mm to 1278 mm).
+                </p>
+
+                <div class="slideshow-container">
+                    <div class="mySlides1"> <img src="img/img/imgs/1_L.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">PVC elbow (diameter: 91 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/2_hinge.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Hinge 4 (diameter: 128 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/3_cylinder_0.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Cylinder 133 63 (diameter: 146 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/4_sprayer.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Sprayer (diameter: 115 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/5_T.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Metallic tee (diameter: 74 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/7_hinge3.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Hinge 1 (diameter: 158 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/9_gear_small.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Gear (small) (diameter: 66 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/13_door_500px.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Car door (diameter: 1278 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/15_engine_500.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Engine (diameter: 904 mm)</div></div>
+                    <div class="mySlides1"> <img src="img/img/imgs/8_cylinder_head_500.png" style="display: block;margin-left:auto;margin-right:auto;width:60%;"><div class="slideshow-caption-text">Cylinder head (diameter: 473 mm)</div></div>
+
+                    <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+                </div>
+
+                <p class="text-justify">
+                    Each scene was acquired with a calibrated setup consisting
+                    of an industrial grade structured light RGB-D sensor (Zivid
+                    2, with spatial resolution of 0.39mm at 700mm), a consumer grade active stereo RGB-D sensor (Realsense D415) and
+                    an industrial RGB camera (FLIR camera with resolution
+                    2048x1536), all the three rigidly mounted on a 6 DOF
+                    robotic manipulator (UR10e from Universal Robots, with a
+                    position repeatability of 0.05 mm). Each scene was acquired
+                    from multiple viewpoints and with large observation distance
+                    variations.              
+                </p>
+                <br>
+                <image src="img/img/dataAcquisitionPipeline.png" style="width:100%">
+               
+            </div>
+        </div>
+        
+<br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <h3>
+                    Ground-truth annotations
+                </h3>
+
+                <p class="text-justify">
+                CEA-IMSOLD proposes a variety of challenges based on object 
+                geometry, material, appearance and scale variation. Below 
+                we show some examples of ground thruth annotations for some 
+                of the objects in the dataset
+                </p>
+
+                <br>
+                <h4>
+                    Industrial grade RGB-D sensor
+                </h4>
+
+                <div class="slideshow-container">
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider">
+                            <img class="slider-before" src="./img/img/hinge000002.jpg"  alt="Before">
+                            <img class="slider-after" src="./img/img/hinge000002_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider2">
+                            <img class="slider-before" src="./img/img/000003cyl.jpg"  alt="Before">
+                            <img class="slider-after" src="./img/img/000003_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider3">
+                            <img class="slider-before" src="./img/img/engine_000095.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/engine_000095_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider4">
+                            <img class="slider-before" src="./img/img/hinge000104.jpg"  alt="Before">
+                            <img class="slider-after" src="./img/img/hinge000104_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider5">
+                            <img class="slider-before" src="./img/img/000109cyl.jpg"  alt="Before">
+                            <img class="slider-after" src="./img/img/000109cyl_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides2">
+                        <div class="custom-image-slider" id="customImageSlider6">
+                            <img class="slider-before" src="./img/img/coude_000026.jpg"  alt="Before">
+                            <img class="slider-after" src="./img/img/coude_000026_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                            
+                    <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+                </div>
+
+                <style>
+                    .slider-before, .slider-after {
+                    user-select: none;
+                        }
+                </style>    
+
+                <script src="./js/slider.js"></script> 
+                <script>
+                    mySlider('customImageSlider');
+                    mySlider('customImageSlider2');
+                    mySlider('customImageSlider3');
+                    mySlider('customImageSlider4');
+                    mySlider('customImageSlider5');
+                    mySlider('customImageSlider6');
+                </script> 
+         
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+
+                <h4>
+                    Consumer grade RGB-D sensor
+                </h4>
+
+
+                <div class="slideshow-container">
+                                       
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider7">
+                            <img class="slider-before" src="./img/img/cyliders_rs_000065.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/cyliders_rs_000065_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider8">
+                            <img class="slider-before" src="./img/img/culasse_rs_000064.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/culasse_rs_000064_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider9">
+                            <img class="slider-before" src="./img/img/cardoor_rs_000067.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/cardoor_rs_000067_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider10">
+                            <img class="slider-before" src="./img/img/engine_rs_000051.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/engine_rs_000051_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider11">
+                            <img class="slider-before" src="./img/img/hinges_rs_000030.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/hinges_rs_000030_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides3">
+                        <div class="custom-image-slider" id="customImageSlider12">
+                            <img class="slider-before" src="./img/img/sprayer_rs_000064.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/sprayer_rs_000064_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                            
+                    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+                </div>
+
+                <style>
+                    .slider-before, .slider-after {
+                    user-select: none;
+                        }
+                </style>    
+
+                <script src="./js/slider.js"></script> 
+                <script>
+                    mySlider('customImageSlider7');
+                    mySlider('customImageSlider8');
+                    mySlider('customImageSlider9');
+                    mySlider('customImageSlider10');
+                    mySlider('customImageSlider11');
+                    mySlider('customImageSlider12');
+                </script> 
+         
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+
+                <h4>
+                    Industrial RGB camera
+                </h4>
+
+
+                <div class="slideshow-container">
+                    
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider13">
+                            <img class="slider-before" src="./img/img/culasse_flir_000082.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/culasse_flir_000082_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider14">
+                            <img class="slider-before" src="./img/img/sodastream_000030.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/sodastream_000030_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider15">
+                            <img class="slider-before" src="./img/img/coudeandy_000081.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/coudeandy_000081_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider16">
+                            <img class="slider-before" src="./img/img/hinge_flir_000030.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/hinge_flir_000030_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider17">
+                            <img class="slider-before" src="./img/img/assembly_flir_000031.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/assembly_flir_000031_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="mySlides4">
+                        <div class="custom-image-slider" id="customImageSlider18">
+                            <img class="slider-before" src="./img/img/cardoor_flir_000165.png"  alt="Before">
+                            <img class="slider-after" src="./img/img/cardoor_flir_000165_raw.png" alt="After">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+
+                    
+
+                            
+                    <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
+                </div>
+
+                <script src="./js/slideshow.js"></script> 
+                <script>
+                    showSlides(1, 0);
+                    showSlides(1, 1);        
+                    showSlides(1, 2);
+                    showSlides(1, 3);
+                </script> 
+
+                <style>
+                    .slider-before, .slider-after {
+                    user-select: none;
+                        }
+                </style>    
+
+                <script src="./js/slider.js"></script> 
+                <script>
+                    mySlider('customImageSlider13');
+                    mySlider('customImageSlider14');
+                    mySlider('customImageSlider15');
+                    mySlider('customImageSlider16');
+                    mySlider('customImageSlider17');
+                    mySlider('customImageSlider18');
+                </script> 
+         
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{meden2024imsold,
+title={Introducing CEA-IMSOLD: a Dataset for Multi-Scale Object Localization in Industry},
+author={Meden, Boris and Vega, Emanuel Pablo and Mayran de Chamisso, Fabrice and Bourgeois, Steve },
+journal={International Conference on Robotics and Automation (ICRA)},
+year={2024}
+}</textarea>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                The website template was borrowed from <a href="https://cea-list.github.io/RING-NeRF/"> RING-NeRF</a>, <a href="https://dorverbin.github.io/refnerf">Ref-NeRF</a> and <a href="https://nerfies.github.io/">nerfies</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
