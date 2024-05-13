@@ -17,11 +17,16 @@
     <meta property="og:image:height" content="840">
     <meta property="og:type" content="website" />
     <!-- <meta property="og:url" content="https://jonbarron.info/zipnerf/"/> -->
-    <meta property="og:title" content="CEA-IMSOLD: an Industrial Multi-Scale Object Localization Dataset" />
-    <meta property="og:description" content="We introduce the CEA Industrial Multi-Scale Object Localization Dataset (CEA-IMSOLD), a new BOP format
-    dataset for 6-DoF object localization, crucial for robotics. This dataset aims to evaluate the current localization methods with
-    respect to a new difficulty: large variations in observation distance and, consequently, large variations in image appearance.
-    Compared to the other publicly available datasets, our dataset provides both images with objects small and completely visible
+    <meta property="og:title" content="CEA-IMSOLD: a Dataset for Multi-Scale Object Localization
+    in Industry" />
+    <meta property="og:description" content="We introduce the CEA Industrial Multi-Scale Ob-
+    ject Localization Dataset (CEA-IMSOLD), a new BOP format
+    dataset for 6-DoF object localization, crucial for robotics. This
+    dataset aims to evaluate the current localization methods with
+    respect to a new difficulty: large variations in observation dis-
+    tance and, consequently, large variations in image appearance.
+    Compared to the other publicly available datasets, our dataset
+    provides both images with objects small and completely visible
     in the image, and images where objects are observed close
     enough so they appear larger than the field of view of the cam-
     era. We also propose to consider the observation distance in the
@@ -31,7 +36,8 @@
     ones such as large car parts." />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="CEA-IMSOLD: an Industrial Multi-Scale Object Localization Dataset" />
+    <meta name="twitter:title" content="CEA-IMSOLD: a Dataset for Multi-Scale Object Localization
+    in Industry" />
     <meta name="twitter:description" content="We introduce the CEA Industrial Multi-Scale Ob-
     ject Localization Dataset (CEA-IMSOLD), a new BOP format
     dataset for 6-DoF object localization, crucial for robotics. This
@@ -99,29 +105,29 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <b>CEA-IMSOLD</b>: an Industrial Multi-Scale Object Localization Dataset</br> 
+                <b>CEA-IMSOLD</b>: a Dataset for Multi-Scale Object Localization in Industry</br> 
             </h2>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://scholar.google.fr/citations?user=knXPf8oAAAAJ&hl=fr">
+                        <a href="https://doriandpetit.com/">
                           Boris Meden¹
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.researchgate.net/profile/Emanuel-Vega">
+                        <a href="https://scholar.google.com/citations?hl=fr&user=Ym-suFYAAAAJ">
                             Emanuel Pablo Vega¹
                           </a>
                     </li>
                     <li>
-                        <a href="https://scholar.google.com/citations?user=VIAU0dYAAAAJ&hl=fr&oi=sra">
+                        <a href="https://cedric.cnam.fr/lab/en/author/paveld/">
                             Fabrice Mayran de Chamisso¹
                         </a>
                     </li>
                     <li>
-                        <a href="https://scholar.google.com/citations?user=Ym-suFYAAAAJ&hl=en">
+                        <a href="https://scholar.google.com/citations?user=kUVG8pIAAAAJ&hl=fr">
                             Steve Bourgeois¹
                         </a>
                     </li>
@@ -135,7 +141,7 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
             <div class="col-md-4 col-md-offset-4 text-center">
                 <ul class="nav nav-pills nav-justified">
                     <li>
-                        <a href="https://github.com/CEA-LIST/CEA-IMSOLD/blob/main/img/IMSOLD_Meden_ICRA24.pdf">
+                        <a href="https://arxiv.org/abs/2312.03357">
                             <image src="img/paper_image.jpg" height="150px" width="116px">
                             <h4><strong>Paper</strong></h4>
                         </a>
@@ -166,7 +172,8 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
                     Compared to the other publicly available datasets, our dataset
                     provides both images with objects small and completely visible
                     in the image, and images where objects are observed close
-                    enough so they appear larger than the field of view of the camera. We also propose to consider the observation distance in the
+                    enough so they appear larger than the field of view of the cam-
+                    era. We also propose to consider the observation distance in the
                     evaluation process and introduce new metrics to do so. Finally,
                     our dataset contains a large variety of industrial objects, from
                     small and simple objects such as bolts to sizable and complex
@@ -213,6 +220,101 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
                     </p>
                 </div>
             </div>
+            
+            <br>
+
+            <br>
+
+            
+            
+            <div class="col-md-8 col-md-offset-2">
+
+                <h3>
+                    IMSOLD statistics
+                </h3>
+
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/dist.png" style="width:49%;margin-top:10px">
+                    <img src="img/img/diag.png" style="width:49%;margin-top:10px">
+                </div>
+            </div>
+
+            <br>
+
+            <br>
+
+            <div class="col-md-8 col-md-offset-2">
+                    <div style="position:relative">
+                        <img src="img/img/visus/test_tikz/test_histogram_IMSOLD_3.png" style="width:100%;margin-top:30px">
+                    </div>
+            </div>
+    
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/out_215_2.gif" style="width:24.5%">
+                    <img src="img/img/visus/out_209_2.gif" style="width:24.5%">
+                    <img src="img/img/visus/out_213_2.gif" style="width:24.5%">
+                    <img src="img/img/visus/out_203_2.gif" style="width:24.5%">
+                </div>
+            </div>
+
+            
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+                
+                <h3>
+                    BOP challenge statistics
+                </h3>
+                
+                <br>
+                
+
+                <div style="position:relative">
+                    <img src="img/img/visus/out_lmo.gif" style="width:30%;margin-top:10px">
+                    <img src="img/img/visus/test_tikz/test_histogram_lmo.png" style="width:69%">
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative">
+                    <img src="img/img/visus/out_itodd.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_itodd.png" style="width:69%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative">
+                    <img src="img/img/visus/out_tless18.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_tless.png" style="width:69%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+                <div style="position:relative">
+                    <img src="img/img/visus/out_hb13.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_hope.png" style="width:69%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative">
+                    <img src="img/img/visus/out_ycb48.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_ycbv.png" style="width:69%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative">
+                    <img src="img/img/visus/out_icbin03.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_icbin.png" style="width:69%">
+                </div>
+            </div>       
+            
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative">
+                    <img src="img/img/visus/out_tudl01.gif" style="width:30%">
+                    <img src="img/img/visus/test_tikz/test_histogram_tudl.png" style="width:69%">
+                </div>
+            </div>
+            
+            
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -244,7 +346,59 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
                     <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
                 </div>
+            </div>
 
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/IMSOLD/out_01.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_02.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_03.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_04.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_05.gif" style="width:19.6%">
+                </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/IMSOLD/out_06.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_07.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_08.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_09.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_10.gif" style="width:19.6%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/IMSOLD/out_11.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_12.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_13.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_14.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_15.gif" style="width:19.6%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/IMSOLD/out_16.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_17.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_18.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_19.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_20.gif" style="width:19.6%">
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div style="position:relative;padding-top:2px;">
+                    <img src="img/img/visus/IMSOLD/out_21.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_22.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_23.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_24.gif" style="width:19.6%">
+                    <img src="img/img/visus/IMSOLD/out_25.gif" style="width:19.6%">
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-md-8 col-md-offset-2">           
+                <br>     
                 <p class="text-justify">
                     Each scene was acquired with a calibrated setup consisting
                     of an industrial grade structured light RGB-D sensor (Zivid
@@ -260,7 +414,9 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
                 <image src="img/img/dataAcquisitionPipeline.png" style="width:100%">
                
             </div>
+        
         </div>
+
         
 <br>
         <div class="row">
@@ -522,7 +678,8 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
          
             </div>
         </div>
-
+        <br>
+        
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
@@ -531,12 +688,23 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
                 <div class="form-group col-md-10 col-md-offset-1">
                     <textarea id="bibtex" class="form-control" readonly>
 @article{meden2024imsold,
-title={Introducing CEA-IMSOLD: an Industrial Multi-Scale Object Localization Dataset},
-author={Meden, Boris and Vega, Emanuel Pablo and Mayran de Chamisso, Fabrice and Bourgeois, Steve},
+title={Introducing CEA-IMSOLD: a Dataset for Multi-Scale Object Localization in Industry},
+author={Meden, Boris and Vega, Emanuel Pablo and Mayran de Chamisso, Fabrice and Bourgeois, Steve },
 journal={International Conference on Robotics and Automation (ICRA)},
 year={2024}
 }</textarea>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Contact
+                </h3>
+                <p class="text-justify">
+                For more information contact boris.meden[at]cea.fr
+                </p>
             </div>
         </div>
     
